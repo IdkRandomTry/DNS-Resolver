@@ -1,0 +1,33 @@
+# Binaries
+*.exe
+*.exe~
+*.out
+*.test
+*.o
+*.a
+
+# Go build cache
+/bin/
+/pkg/
+/vendor/
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+*.bak
+
+# PCAP files (if large or not part of repo)
+# *.pcap
+
+# Go module files (optional if you want to track them)
+# go.sum

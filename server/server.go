@@ -19,18 +19,25 @@ func main() {
 	defer conn.Close()
 
 	fmt.Println("UDP server listening on port 1053")
+	fmt.Println("Custom Header\t | Domain Name\t\t | Resolved IP")
+	fmt.Println("-----------------|-----------------------|----------------")
 
 	buf := make([]byte, 4096)
 
 	for {
-		n, clientAddr, err := conn.ReadFromUDP(buf)
+		n, _, err := conn.ReadFromUDP(buf)
 		if err != nil {
 			log.Println("Error reading from UDP:", err)
 			continue
 		}
 
 		header := string(buf[:8])
-		dnsPayload := buf[8:n]
+		domain, err := extractDomain(buf[8:n])
+		
+		if err != nil {
+			fmt.Printf("Header %s: Domain extraction error: %v\n", header, err)
+			continue
+		}
 
 		ip, err := selectIP(header)
 		if err != nil {
@@ -38,7 +45,6 @@ func main() {
 			continue
 		}
 
-		fmt.Printf("Received packet from %s, Header: %s, DNS payload len: %d, Selected IP: %s\n",
-			clientAddr.String(), header, len(dnsPayload), ip)
+		fmt.Printf("%s \t | %-21s | %s  \n", header, domain, ip)
 	}
 }

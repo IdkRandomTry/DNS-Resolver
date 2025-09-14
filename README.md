@@ -23,7 +23,7 @@ Selecting PCAP: (Siddhesh Umarjee: 23110347  + Shounak Ranade: 23110304 )%10 = 1
 
 ## Folder Structure
 ```
-dns_udp_project/
+dns_resolver/
 - client/
   - client.go       # Client code
   - 1.pcap          # PCAP file

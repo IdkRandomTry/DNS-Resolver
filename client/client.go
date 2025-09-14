@@ -73,7 +73,7 @@ func main() {
 			log.Fatal(err)
 		}
 
-		fmt.Printf("Sent DNS query with ID %d at %s\n", id, tsStr)
+		fmt.Printf("Sent DNS query with ID %d at %s with header: %s \n", id, tsStr, string(header))
 
 		id++
 	}

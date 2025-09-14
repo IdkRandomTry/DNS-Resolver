@@ -9,7 +9,7 @@ import (
 func main() {
 	addr := net.UDPAddr{
 		Port: 1053,
-		IP:   net.ParseIP("0.0.0.0"),
+		IP:   net.ParseIP("0.0.0.0"),  //not 127.0.0.1 so that server listens on all interfaces
 	}
 
 	conn, err := net.ListenUDP("udp", &addr)

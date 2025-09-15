@@ -78,10 +78,25 @@ run without flags for default test (1.pcap)
 
 ## Server Output Example
        
-    Received packet from 127.0.0.1:59719, Header: 11100400, DNS payload len: 30, Selected IP: 192.168.1.1        
-    Received packet from 127.0.0.1:59719, Header: 11100401, DNS payload len: 35, Selected IP: 192.168.1.2  
-    ...
-    Received packet from 127.0.0.1:57919, Header: 12505100, DNS payload len: 30, Selected IP: 192.168.1.6
+    Custom Header    | Domain Name           | Resolved IP
+    -----------------|-----------------------|----------------
+    17565000         | facebook.com.         | 192.168.1.6  
+    17565001         | stackoverflow.com.    | 192.168.1.7  
+    17565002         | example.com.          | 192.168.1.8  
+    17565003         | linkedin.com.         | 192.168.1.9  
+    17565104         | apple.com.            | 192.168.1.10  
+    17565105         | google.com.           | 192.168.1.6  
+
+---
+    Custom Header    | Domain Name           | Resolved IP
+    -----------------|-----------------------|----------------
+    22583300         | facebook.com.         | 192.168.1.11  
+    22583301         | stackoverflow.com.    | 192.168.1.12  
+    22583402         | example.com.          | 192.168.1.13  
+    22583403         | linkedin.com.         | 192.168.1.14  
+    22583404         | apple.com.            | 192.168.1.15  
+    22583505         | google.com.           | 192.168.1.11  
+
 
 ---
 
@@ -89,4 +104,3 @@ run without flags for default test (1.pcap)
 
 - **Custom header is generated using the UTC timestamp of packet processing**, not the original PCAP timestamp.  
 - Only **DNS query packets** are sent to the server.  
-- IP selection is **deterministic** based on the header and time slot. 
